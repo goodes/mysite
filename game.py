@@ -6,7 +6,10 @@ WORD_FILE = os.path.abspath(os.path.join(os.path.split(__file__)[0], "words.txt"
 
 def choose_word():
     words = open(WORD_FILE).readlines()
-    return words[0].strip()
+    if words[-1].strip() == '':
+        words = words[:-1]
+
+    return random.choice(words).strip()
 
 def scramble_word(word):
     word_as_list = list(word)
